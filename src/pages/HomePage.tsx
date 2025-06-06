@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const mockCards = [
@@ -85,8 +85,94 @@ const feedbacks = [
   },
 ];
 
+// 核心功能数据
+const coreFeatures = [
+  {
+    id: 'interview',
+    title: 'AI模拟面试',
+    description: '模拟真实面试环境，提供即时反馈和分析，帮助你熟悉面试流程，提升应对能力。',
+    icon: (
+      <svg className="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 8H17M7 12H11M12 20L8 16H5C3.89543 16 3 15.1046 3 14V6C3 4.89543 3.89543 4 5 4H19C20.1046 4 21 4.89543 21 6V14C21 15.1046 20.1046 16 19 16H16L12 20Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+    benefits: [
+      '模拟真实面试流程与问题',
+      '提供专业、详细的反馈与建议',
+      '支持视频录制，回顾分析自己的表现',
+      '覆盖各类热门岗位的经典面试题'
+    ],
+    color: 'feature-blue',
+    route: '/interview'
+  },
+  {
+    id: 'resume',
+    title: 'AI简历助手',
+    description: '智能生成专业简历，针对不同岗位优化内容，突出个人优势，提高简历通过率。',
+    icon: (
+      <svg className="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 7V3M16 7V3M7 11H17M5 21H19C20.1046 21 21 20.1046 21 19V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+    benefits: [
+      '一键生成专业标准简历',
+      'AI评估简历优缺点与改进建议',
+      '针对目标岗位定制简历内容',
+      '多种精美模板与下载格式'
+    ],
+    color: 'feature-green',
+    route: '/resume'
+  },
+  {
+    id: 'path',
+    title: 'AI个性化路线',
+    description: '根据个人兴趣和目标，定制专属学习路径，阶段性测试检验学习成果，确保高效进步。',
+    icon: (
+      <svg className="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 20L3 17V4L9 7M9 20V7M9 20L15 17M9 7L15 4M15 17V4M15 17L21 20V7L15 4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+    benefits: [
+      '根据个人基础与目标定制学习路线',
+      '分阶段学习内容与测验',
+      '实时更新的技术知识图谱',
+      '行业专家定期更新的优质资源'
+    ],
+    color: 'feature-yellow',
+    route: '/choose'
+  },
+  {
+    id: 'position',
+    title: '个性化岗位推荐',
+    description: '分析你的技能、学习记录和测试结果，匹配最适合的岗位，提供精准就业指导。',
+    icon: (
+      <svg className="feature-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21 13.2554C18.2207 14.3805 15.1827 15 12 15C8.8173 15 5.7793 14.3805 3 13.2554M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7ZM12 19H8.21252C7.83009 19 7.51726 18.7542 7.44443 18.3787L7 17L10 16L12 17L14 16L17 17L16.5556 18.3787C16.4827 18.7542 16.1699 19 15.7875 19H12Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+    benefits: [
+      '基于个人能力画像推荐最匹配岗位',
+      '提供岗位详情与匹配度分析',
+      '针对性的能力提升建议',
+      '热门企业的最新招聘信息'
+    ],
+    color: 'feature-purple',
+    route: '/position'
+  }
+];
+
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
+  const [activeFeature, setActiveFeature] = useState(0);
+  
+  const nextFeature = () => {
+    setActiveFeature((prev) => (prev + 1) % coreFeatures.length);
+  };
+  
+  const prevFeature = () => {
+    setActiveFeature((prev) => (prev - 1 + coreFeatures.length) % coreFeatures.length);
+  };
+  
   return (
     <div className="muzli-home">
       <section className="muzli-hero">
@@ -97,6 +183,7 @@ const HomePage: React.FC = () => {
           立即体验
         </button>
       </section>
+
       <section className="muzli-cards">
         {mockCards.map((card, idx) => (
           <div className={`muzli-card ${card.color}`} key={idx}>
@@ -127,6 +214,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
+      
       {/* 新增产品介绍区块2（图片在左，文字在右，右下角为半遮挡小图片） */}
       <section className="product-section">
         <div className="product-intro product-intro-reverse-imgs">
@@ -137,6 +225,91 @@ const HomePage: React.FC = () => {
           <div className="product-intro-text">
             <h2>智能岗位推荐，助你精准就业</h2>
             <p>通过AI算法分析你的学习轨迹与能力画像，智能匹配最适合你的实习与就业岗位，提升求职成功率。</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 修改：功能展示区域 - 改为轮播图形式 */}
+      <section className="feature-carousel-section">
+        <div className="feature-carousel-container">
+          <h2 className="feature-carousel-title">助力多款明星产品实现创新功能</h2>
+          
+          <div className="feature-carousel">
+            <div className="feature-carousel-content">
+              <div className="feature-carousel-phone">
+                <div className="phone-mockup">
+                  <div className="phone-screen">
+                    {/* 手机界面模拟 */}
+                    <div className="phone-app-interface">
+                      <div className="phone-app-header">
+                        <div className="phone-app-back"></div>
+                        <div className="phone-app-title">{coreFeatures[activeFeature].title}</div>
+                        <div className="phone-app-more"></div>
+                      </div>
+                      <div className="phone-app-content">
+                        <div className="phone-app-icon-wrapper">
+                          {coreFeatures[activeFeature].icon}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="feature-carousel-text">
+                <h3 className="feature-carousel-item-title">{coreFeatures[activeFeature].title}</h3>
+                <p className="feature-carousel-description">{coreFeatures[activeFeature].description}</p>
+                <ul className="feature-carousel-benefits">
+                  {coreFeatures[activeFeature].benefits.map((benefit, idx) => (
+                    <li key={idx}>{benefit}</li>
+                  ))}
+                </ul>
+                <button 
+                  className="feature-carousel-btn" 
+                  onClick={() => navigate(coreFeatures[activeFeature].route)}
+                >
+                  {coreFeatures[activeFeature].title}服务
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            
+            <div className="feature-carousel-controls">
+              <button 
+                className="feature-carousel-arrow feature-carousel-prev" 
+                onClick={prevFeature}
+                aria-label="上一个功能"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19 12H5M5 12L12 19M5 12L12 5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+              <div className="feature-carousel-indicators">
+                {coreFeatures.map((_, index) => (
+                  <button 
+                    key={index}
+                    className={`feature-carousel-indicator ${index === activeFeature ? 'active' : ''}`}
+                    onClick={() => setActiveFeature(index)}
+                    aria-label={`切换到第${index + 1}个功能`}
+                  />
+                ))}
+              </div>
+              <button 
+                className="feature-carousel-arrow feature-carousel-next" 
+                onClick={nextFeature}
+                aria-label="下一个功能"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 12H19M19 12L12 5M19 12L12 19" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            
+            <div className="feature-carousel-pagination">
+              {activeFeature + 1} / {coreFeatures.length}
+            </div>
           </div>
         </div>
       </section>

@@ -8,6 +8,9 @@ import NotFoundPage from '../pages/NotFoundPage';
 import MainLayout from '../layouts/MainLayout';
 import { isLoggedIn } from '../services/auth';
 import ChoosePage from '../pages/ChoosePage';
+import InterviewPage from '../pages/InterviewPage';
+import ResumePage from '../pages/ResumePage';
+import PositionPage from '../pages/PositionPage';
 
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
   return isLoggedIn() ? <>{children}</> : <Navigate to="/login" />;
@@ -40,6 +43,30 @@ export default function AppRoutes() {
           element={
             <PrivateRoute>
               <ChoosePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/interview"
+          element={
+            <PrivateRoute>
+              <InterviewPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/resume"
+          element={
+            <PrivateRoute>
+              <ResumePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/position"
+          element={
+            <PrivateRoute>
+              <PositionPage />
             </PrivateRoute>
           }
         />

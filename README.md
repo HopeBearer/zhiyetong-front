@@ -1,54 +1,134 @@
-# React + TypeScript + Vite
+# 职路通 - 大学生就业学习与精准匹配平台
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+职路通是一个面向大学生的就业导向型学习平台，利用AI技术为大学生提供从学习到就业的全流程支持。本平台集成了学习路线规划、关卡式测试、模拟面试和岗位推荐等功能，旨在帮助大学生更有效地提升能力，实现精准就业。
 
-Currently, two official plugins are available:
+## 核心功能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. AI模拟面试
 
-## Expanding the ESLint configuration
+- **真实面试环境模拟**：提供类似真实面试的问答环境
+- **专业反馈与分析**：针对回答内容提供详细的评价和改进建议
+- **视频录制功能**：支持录制面试过程，便于回顾分析
+- **覆盖多种岗位**：包含各类热门职位的经典面试题
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 2. AI简历助手
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **简历评价与优化**：上传简历获取AI分析和专业改进建议
+- **AI简历生成**：根据个人信息智能生成符合职位要求的简历
+- **针对目标岗位定制**：根据应聘岗位优化简历内容
+- **多种模板选择**：提供多种专业简历模板
+
+### 3. AI个性化学习路线
+
+- **定制化学习路径**：根据个人兴趣和目标生成专属学习路线
+- **阶段性测试**：通过关卡式测试检验学习成果
+- **技术知识图谱**：直观展示知识体系和学习进度
+- **优质学习资源**：由行业专家筛选推荐的学习材料
+
+### 4. 个性化岗位推荐
+
+- **能力画像分析**：基于技能、测试结果和学习记录生成个人画像
+- **精准岗位匹配**：智能匹配最适合的实习与就业岗位
+- **匹配度分析**：展示与各岗位的匹配程度及原因
+- **能力提升建议**：针对目标岗位提供能力提升方向
+
+## 技术实现
+
+本项目使用React + TypeScript构建，主要技术栈包括：
+
+- **前端框架**：React、React Router
+- **样式处理**：CSS、响应式设计
+- **状态管理**：React Hooks (useState, useEffect)
+- **路由管理**：React Router v6
+- **数据模拟**：模拟API响应数据
+- **Markdown渲染**：使用marked库渲染结构化内容
+
+## 项目结构
+
+```
+src/
+├── assets/        # 静态资源文件
+├── components/    # 可复用组件
+│   └── resume/    # 简历相关组件
+├── constants/     # 常量定义
+├── layouts/       # 布局组件
+│   └── MainLayout.tsx  # 主布局包含导航栏
+├── pages/         # 页面组件
+│   ├── HomePage.tsx       # 首页
+│   ├── ChoosePage.tsx     # 学习路线选择页
+│   ├── InterviewPage.tsx  # AI模拟面试页
+│   ├── ResumePage.tsx     # AI简历助手页
+│   ├── PositionPage.tsx   # 岗位推荐页
+│   ├── TestPage.tsx       # 关卡测试页
+│   ├── LoginPage.tsx      # 登录页
+│   └── RegisterPage.tsx   # 注册页
+├── routes/        # 路由配置
+├── services/      # 服务与API调用
+├── styles/        # 样式文件
+├── utils/         # 工具函数
+├── App.tsx        # 应用入口组件
+└── main.tsx       # 应用渲染入口
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 页面设计
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 首页
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+首页采用现代化设计，包含以下部分：
+- 英雄区：展示平台主标题和简介
+- 学习路线卡片：展示各种可选的学习路线
+- 核心功能轮播：以轮播图形式展示平台四大核心功能
+- 产品介绍区：通过图文展示平台的主要特点
+- 用户评价区：展示用户的真实评价和反馈
+
+### AI模拟面试页
+
+- 面试设置：选择面试岗位、难度等参数
+- 视频面试：支持摄像头开启，录制面试过程
+- 问答互动：展示面试题目，用户可以文字或语音回答
+- 反馈分析：AI分析回答内容，提供专业评价
+
+### AI简历助手页
+
+- 简历评价：上传简历获取评价和改进建议
+- AI生成简历：输入个人信息，生成专业简历
+
+### 岗位推荐页
+
+- 个人画像：展示用户技能、兴趣和能力评估
+- 岗位推荐：根据画像推荐匹配度高的岗位
+- 岗位详情：每个岗位的详细信息和匹配理由
+- 能力提升路径：针对目标岗位的能力提升建议
+
+## 用户流程
+
+1. 注册/登录平台
+2. 选择学习路线或直接使用功能
+3. 完成学习和关卡测试，积累能力数据
+4. 使用AI简历助手优化简历
+5. 通过模拟面试提升面试技能
+6. 获取个性化岗位推荐，找到最适合的工作
+
+## 启动项目
+
+```bash
+# 安装依赖
+npm install
+
+# 启动开发服务器
+npm run dev
+
+# 构建生产版本
+npm run build
 ```
+
+## 未来计划
+
+- 接入真实的AI大模型API，提升功能智能化水平
+- 增加社区互动功能，促进用户交流与分享
+- 添加企业合作模块，直接对接招聘需求
+- 开发移动端应用，提供更便捷的使用体验
+
+## 项目贡献
+
+职路通是一个开放的项目，欢迎对大学生就业和能力提升感兴趣的开发者参与贡献。您可以通过提交Issue或Pull Request来参与项目的改进与完善。

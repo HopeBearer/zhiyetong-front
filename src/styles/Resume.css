@@ -1,0 +1,586 @@
+/* 简历助手页面样式 */
+.resume-page {
+  margin-top: 64px;
+  max-width: 1200px;
+}
+
+.resume-tab-navigation {
+  margin-bottom: 1.5rem;
+}
+
+.resume-tab-btn {
+  padding: 0.9em 2em;
+  font-size: 1.15rem;
+  font-weight: 700;
+  border-radius: 1.5em;
+  transition: all 0.3s ease;
+  margin: 0 0.5rem;
+  border: none;
+  background: #f7f9fa;
+  color: #64748b;
+  box-shadow: 0 2px 8px 0 rgba(60, 80, 120, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.resume-tab-btn:hover {
+  color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px 0 rgba(37, 99, 235, 0.15);
+}
+
+.resume-tab-btn.active {
+  background: linear-gradient(90deg, #4f8cff 0%, #6ed0ff 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px 0 rgba(79, 140, 255, 0.16);
+}
+
+.resume-tab-content {
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 40px 0 rgba(60, 80, 120, 0.13), 0 1.5px 8px 0 rgba(79,140,255,0.08);
+  padding: 2.5rem;
+  transition: all 0.3s ease;
+}
+
+/* 填充示例数据按钮 */
+.sample-data-btn {
+  background-color: #fff;
+  color: #4f8cff;
+  border: 1px solid #4f8cff;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sample-data-btn:hover {
+  background-color: #e0e7ff;
+  color: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* 简历评价组件样式 */
+.resume-section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.8rem;
+}
+
+.resume-section-subtitle {
+  font-size: 1.1rem;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+}
+
+.upload-resume-container {
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2.5rem;
+}
+
+.file-upload-container {
+  border: 2px dashed #e0e7ff !important;
+  border-radius: 1.2rem !important;
+  padding: 3rem 2rem !important;
+  background: rgba(224, 231, 255, 0.1);
+  transition: all 0.3s ease;
+  margin-bottom: 2.5rem;
+}
+
+.file-upload-container:hover {
+  border-color: #4f8cff !important;
+  background: rgba(224, 231, 255, 0.2);
+  box-shadow: 0 4px 16px 0 rgba(79, 140, 255, 0.1);
+}
+
+/* 隐藏文件输入框的默认文本 */
+.custom-file-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.custom-file-input + label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.upload-icon {
+  color: #4f8cff;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.file-upload-container:hover .upload-icon {
+  transform: translateY(-5px);
+}
+
+.upload-text {
+  margin-bottom: 1rem;
+}
+
+.selected-file {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: rgba(224, 231, 255, 0.3);
+  border-radius: 0.8rem;
+  display: inline-block;
+}
+
+.button-container {
+  padding: 0.5rem 3rem 1rem;
+}
+
+/* 评价结果样式 */
+.feedback-container {
+  background: #fff !important;
+  border-radius: 1.2rem !important;
+  border: 1.5px solid #e0e7ff !important;
+  padding: 2rem !important;
+  box-shadow: 0 4px 16px 0 rgba(60, 80, 120, 0.08);
+  margin-top: 2rem;
+}
+
+.feedback-wrapper {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+
+.feedback-content {
+  color: #334155;
+  font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+  line-height: 1.7;
+}
+
+/* 自定义评价结果标题样式 */
+.feedback-main-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin: 1.5rem 0 1rem;
+  text-align: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e0e7ff;
+}
+
+.feedback-section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #4f8cff;
+  margin: 1.5rem 0 1rem;
+  padding-left: 0.5rem;
+  border-left: 3px solid #4f8cff;
+}
+
+/* 自定义评价结果列表样式 */
+.feedback-ordered-list,
+.feedback-unordered-list {
+  padding-left: 1.5rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.feedback-ordered-list {
+  counter-reset: item;
+}
+
+.feedback-list-item {
+  margin-bottom: 0.7rem;
+  position: relative;
+}
+
+.feedback-unordered-list .feedback-list-item {
+  list-style-type: none;
+  position: relative;
+}
+
+.feedback-unordered-list .feedback-list-item:before {
+  content: "";
+  position: absolute;
+  left: -1.2rem;
+  top: 0.5rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #4f8cff;
+}
+
+.feedback-ordered-list .feedback-list-item {
+  list-style-type: none;
+  counter-increment: item;
+}
+
+.feedback-ordered-list .feedback-list-item:before {
+  content: counter(item) ".";
+  position: absolute;
+  left: -1.5rem;
+  color: #4f8cff;
+  font-weight: 600;
+}
+
+.feedback-content p {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* Markdown内容样式 */
+.markdown-content {
+  color: #334155;
+  font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+  line-height: 1.7;
+}
+
+.markdown-content h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin: 1.5rem 0 1rem;
+  text-align: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e0e7ff;
+}
+
+.markdown-content h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #4f8cff;
+  margin: 1.5rem 0 1rem;
+  padding-left: 0.5rem;
+  border-left: 3px solid #4f8cff;
+}
+
+.markdown-content p {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.markdown-content ul {
+  padding-left: 1.5rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.markdown-content ol {
+  padding-left: 1.5rem;
+  margin: 1rem 0 1.5rem;
+  counter-reset: item;
+}
+
+.markdown-content li {
+  margin-bottom: 0.7rem;
+  position: relative;
+}
+
+.markdown-content ul li {
+  list-style-type: none;
+  position: relative;
+}
+
+.markdown-content ul li:before {
+  content: "";
+  position: absolute;
+  left: -1.2rem;
+  top: 0.5rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #4f8cff;
+}
+
+.markdown-content ol li {
+  list-style-type: none;
+  counter-increment: item;
+}
+
+.markdown-content ol li:before {
+  content: counter(item) ".";
+  position: absolute;
+  left: -1.5rem;
+  color: #4f8cff;
+  font-weight: 600;
+}
+
+.markdown-content code {
+  background-color: rgba(224, 231, 255, 0.4);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+  font-size: 0.9em;
+}
+
+.markdown-content blockquote {
+  border-left: 3px solid #4f8cff;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* 按钮样式 */
+.resume-btn {
+  background: linear-gradient(90deg, #4f8cff 0%, #6ed0ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 1.5em;
+  padding: 0.9em 2em;
+  font-size: 1.15em;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 rgba(79, 140, 255, 0.10);
+  transition: all 0.18s ease;
+  margin-left: 0;
+  letter-spacing: 0.5px;
+  width: 100%;
+}
+
+.resume-btn:hover:not(:disabled) {
+  background: linear-gradient(90deg, #6ed0ff 0%, #4f8cff 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 16px 0 rgba(79, 140, 255, 0.16);
+}
+
+.resume-btn:disabled {
+  background: #bfc9d1;
+  cursor: not-allowed;
+  color: #fff;
+  opacity: 0.7;
+}
+
+/* 表单输入样式 */
+.resume-form input,
+.resume-form textarea {
+  width: 100%;
+  padding: 0.9em 1.1em;
+  border-radius: 1.2em;
+  border: 1.5px solid #e0e7ff;
+  font-size: 1.08em;
+  background: #f7f9fa;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.resume-form input:focus,
+.resume-form textarea:focus {
+  border: 1.5px solid #4f8cff;
+  box-shadow: 0 0 0 2px #e0e7ff;
+}
+
+.resume-form label {
+  font-size: 1rem;
+  color: #334155;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* 生成的简历样式 */
+.generated-resume {
+  background: #fff;
+}
+
+/* 简历预览选项卡 */
+.resume-preview-tabs {
+  display: flex;
+  border-bottom: 1px solid #e0e7ff;
+  margin-bottom: 1.5rem;
+}
+
+.resume-preview-tab {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #64748b;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.resume-preview-tab.active {
+  color: #4f8cff;
+  border-bottom: 3px solid #4f8cff;
+}
+
+.resume-preview-tab:hover {
+  color: #2563eb;
+}
+
+/* 现代简历预览样式 */
+.modern-resume-preview {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+/* 新的现代黑色主题简历样式 */
+.resume-html-preview {
+  color: #333;
+  font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.resume-html-preview .modern-resume {
+  max-width: 100%;
+  margin: 0;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.resume-html-preview .resume-header {
+  background-color: #333;
+  color: white;
+  padding: 30px;
+}
+
+.resume-html-preview .header-main h1 {
+  margin: 0 0 20px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.resume-html-preview .header-line {
+  height: 2px;
+  background-color: #ccc;
+  margin-bottom: 20px;
+}
+
+.resume-html-preview .personal-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.resume-html-preview .info-left, 
+.resume-html-preview .info-right {
+  flex: 1;
+}
+
+.resume-html-preview .info-right {
+  text-align: right;
+}
+
+.resume-html-preview .personal-info p {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.resume-html-preview .personal-info a {
+  color: white;
+  text-decoration: none;
+}
+
+.resume-html-preview .personal-info a:hover {
+  text-decoration: underline;
+}
+
+.resume-html-preview .resume-content {
+  padding: 20px 30px;
+}
+
+.resume-html-preview .resume-section {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.resume-html-preview .section-title {
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.resume-html-preview .section-content {
+  padding: 0 10px;
+}
+
+.resume-html-preview .section-content p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.resume-html-preview .section-content ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.resume-html-preview .section-content li {
+  margin-bottom: 8px;
+  list-style-type: square;
+}
+
+.resume-html-preview .icon {
+  margin-right: 5px;
+}
+
+.resume-html-preview strong {
+  font-weight: 600;
+}
+
+/* Markdown预览源码样式 */
+.markdown-preview {
+  background: #f8fafc;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  overflow: auto;
+}
+
+.resume-markdown-code {
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #334155;
+  white-space: pre-wrap;
+}
+
+/* 简历按钮样式 */
+.download-btn {
+  background: #fff;
+  color: #4f8cff;
+  font-weight: 700;
+  box-shadow: none;
+  border: 1.5px solid #4f8cff;
+  padding: 0.5em 1.2em;
+  transition: all 0.2s ease;
+  border-radius: 1.2em;
+}
+
+.download-btn:hover {
+  background: #4f8cff;
+  color: #fff;
+}
+
+.return-btn {
+  background: #f7f9fa;
+  color: #64748b;
+  font-weight: 600;
+  border: 1.5px solid #e0e7ff;
+  padding: 0.5em 1.2em;
+  transition: all 0.2s ease;
+  border-radius: 1.2em;
+}
+
+.return-btn:hover {
+  background: #e0e7ff;
+  color: #4f8cff;
+} 

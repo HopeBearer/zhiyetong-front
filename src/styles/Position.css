@@ -1,0 +1,406 @@
+/* 岗位推荐页面样式 */
+.position-page {
+  max-width: 1200px;
+  margin: 64px auto 0;
+  padding: 0 24px 40px;
+}
+
+.position-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.position-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.position-subtitle {
+  font-size: 1.1rem;
+  color: #64748b;
+}
+
+/* 用户个人画像区域 */
+.position-user-profile {
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 8px 40px 0 rgba(60, 80, 120, 0.13), 0 1.5px 8px 0 rgba(79,140,255,0.08);
+  margin-bottom: 2.5rem;
+}
+
+.position-user-profile h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.profile-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.profile-card {
+  background: #f7f9fa;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px 0 rgba(60, 80, 120, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px 0 rgba(60, 80, 120, 0.15);
+}
+
+.profile-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #4f8cff;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* 技能标签样式 */
+.skill-tags, .interest-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  background: rgba(79, 140, 255, 0.15);
+  color: #4f8cff;
+  border-radius: 2rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.interest-tag {
+  background: rgba(110, 208, 255, 0.15);
+  color: #6ed0ff;
+  border-radius: 2rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* 能力评估样式 */
+.test-results {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.test-result-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.result-label {
+  width: 80px;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.result-bar-container {
+  flex: 1;
+  height: 8px;
+  background-color: #e0e7ff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.result-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1s ease;
+}
+
+.result-value {
+  font-weight: 600;
+  color: #333;
+  min-width: 30px;
+  text-align: right;
+}
+
+/* 岗位推荐区域 */
+.position-recommendations {
+  margin-bottom: 2.5rem;
+}
+
+.position-recommendations h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(60, 80, 120, 0.1);
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(79, 140, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #4f8cff;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.position-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.position-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(60, 80, 120, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #e0e7ff;
+}
+
+.position-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(60, 80, 120, 0.15);
+}
+
+.position-card-header {
+  display: flex;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e0e7ff;
+  position: relative;
+}
+
+.company-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #f7f9fa;
+  padding: 0.5rem;
+  margin-right: 1rem;
+}
+
+.position-meta {
+  flex: 1;
+}
+
+.position-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.3rem;
+}
+
+.company-name {
+  font-size: 1rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.position-tags {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.position-location, .position-salary {
+  font-size: 0.9rem;
+  color: #64748b;
+  background: #f7f9fa;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+}
+
+/* 匹配度样式 */
+.match-rate-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.match-rate-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.3rem;
+}
+
+.match-rate-inner {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #333;
+}
+
+.match-label {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.position-card-body {
+  padding: 1.5rem;
+}
+
+.position-requirements, .position-description {
+  margin-bottom: 1.5rem;
+}
+
+.position-requirements h4, .position-description h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #4f8cff;
+  margin-bottom: 0.8rem;
+}
+
+.position-requirements ul {
+  padding-left: 1.5rem;
+}
+
+.position-requirements li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  list-style-type: none;
+}
+
+.position-requirements li:before {
+  content: "";
+  position: absolute;
+  left: -1.2rem;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #4f8cff;
+}
+
+.position-description p {
+  line-height: 1.6;
+  color: #334155;
+}
+
+.apply-button {
+  background: linear-gradient(90deg, #4f8cff 0%, #6ed0ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 1.5em;
+  padding: 0.8em 1.8em;
+  font-size: 1.1em;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 rgba(79, 140, 255, 0.10);
+  transition: all 0.18s ease;
+  width: 100%;
+}
+
+.apply-button:hover {
+  background: linear-gradient(90deg, #6ed0ff 0%, #4f8cff 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 16px 0 rgba(79, 140, 255, 0.16);
+}
+
+/* 提升建议区域 */
+.position-suggestions {
+  margin-top: 3rem;
+}
+
+.position-suggestions h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.suggestion-card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(60, 80, 120, 0.1);
+  display: flex;
+  gap: 1.5rem;
+  border: 1px solid #e0e7ff;
+}
+
+.suggestion-icon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  background: rgba(79, 140, 255, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4f8cff;
+}
+
+.suggestion-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.suggestion-content {
+  flex: 1;
+}
+
+.suggestion-content h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #4f8cff;
+  margin-bottom: 0.8rem;
+}
+
+.suggestion-content p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: #334155;
+}
+
+.suggestion-content ul {
+  padding-left: 1.5rem;
+}
+
+.suggestion-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  color: #334155;
+}
+
+/* 响应式设计 */
+@media (min-width: 768px) {
+  .position-cards {
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  }
+} 

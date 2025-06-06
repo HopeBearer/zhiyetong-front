@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { DIRECTIONS, QUESTIONS, STAGE_QUESTIONS } from '../constants/data';
+import Modal from '../components/Modal';
 
 const TestPage: React.FC = () => {
   const { grade } = useParams<{ grade: string }>();
@@ -9,6 +10,7 @@ const TestPage: React.FC = () => {
   const [direction, setDirection] = useState(DIRECTIONS[0].value);
   const [testId, setTestId] = useState<string | null>(null);
   const [answers, setAnswers] = useState<{ [key: number]: string }>({});
+  const [showSubmitSuccessModal, setShowSubmitSuccessModal] = useState(false);
   
   // 从location.state中获取传递过来的参数
   useEffect(() => {
@@ -49,7 +51,7 @@ const TestPage: React.FC = () => {
   // 提交答案
   const handleSubmit = () => {
     // 这里可以添加答案提交逻辑
-    alert('答案已提交！');
+    setShowSubmitSuccessModal(true);
   };
 
   const questions = getCurrentQuestions();
@@ -252,6 +254,22 @@ const TestPage: React.FC = () => {
           )}
         </div>
       </div>
+
+      {/* 提交成功弹框 */}
+      <Modal
+        isOpen={showSubmitSuccessModal}
+        title="提交成功"
+        content={
+          <div>
+            <p>您的答案已成功提交！</p>
+            <p>我们会尽快为您进行评估。</p>
+          </div>
+        }
+        onConfirm={() => setShowSubmitSuccessModal(false)}
+        onCancel={() => setShowSubmitSuccessModal(false)}
+        confirmText="我知道了"
+        cancelText="关闭"
+      />
     </div>
   );
 };
