@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const mockCards = [
@@ -85,7 +85,7 @@ const feedbacks = [
   },
 ];
 
-// 核心功能数据
+// 更新核心功能数据，添加背景图片
 const coreFeatures = [
   {
     id: 'interview',
@@ -103,7 +103,8 @@ const coreFeatures = [
       '覆盖各类热门岗位的经典面试题'
     ],
     color: 'feature-blue',
-    route: '/interview'
+    route: '/interview',
+    bgImage: 'https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?auto=format&fit=crop&q=80&w=800'
   },
   {
     id: 'resume',
@@ -121,7 +122,8 @@ const coreFeatures = [
       '多种精美模板与下载格式'
     ],
     color: 'feature-green',
-    route: '/resume'
+    route: '/resume',
+    bgImage: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=800'
   },
   {
     id: 'path',
@@ -139,7 +141,8 @@ const coreFeatures = [
       '行业专家定期更新的优质资源'
     ],
     color: 'feature-yellow',
-    route: '/choose'
+    route: '/choose',
+    bgImage: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800'
   },
   {
     id: 'position',
@@ -157,7 +160,8 @@ const coreFeatures = [
       '热门企业的最新招聘信息'
     ],
     color: 'feature-purple',
-    route: '/position'
+    route: '/position',
+    bgImage: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800'
   }
 ];
 
@@ -165,13 +169,26 @@ const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const [activeFeature, setActiveFeature] = useState(0);
   
-  const nextFeature = () => {
-    setActiveFeature((prev) => (prev + 1) % coreFeatures.length);
-  };
+  // 自动轮播的时间间隔（毫秒）
+  const autoSlideInterval = 5000;
   
-  const prevFeature = () => {
+  const nextFeature = useCallback(() => {
+    setActiveFeature((prev) => (prev + 1) % coreFeatures.length);
+  }, []);
+  
+  const prevFeature = useCallback(() => {
     setActiveFeature((prev) => (prev - 1 + coreFeatures.length) % coreFeatures.length);
-  };
+  }, []);
+  
+  // 添加自动轮播效果
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      nextFeature();
+    }, autoSlideInterval);
+    
+    // 当用户与轮播图交互时清除自动轮播
+    return () => clearInterval(intervalId);
+  }, [nextFeature]);
   
   return (
     <div className="muzli-home">
@@ -229,14 +246,24 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 修改：功能展示区域 - 改为轮播图形式 */}
+      {/* 修改：功能展示区域 - 改为带背景图片的轮播图形式 */}
       <section className="feature-carousel-section">
         <div className="feature-carousel-container">
           <h2 className="feature-carousel-title">助力多款明星产品实现创新功能</h2>
           
           <div className="feature-carousel">
-            <div className="feature-carousel-content">
-              <div className="feature-carousel-phone">
+            <div 
+              className="feature-carousel-content"
+              style={{
+                backgroundImage: `linear-gradient(rgba(0, 57, 198, 0.85), rgba(0, 161, 255, 0.85)), url(${coreFeatures[activeFeature].bgImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                transition: 'background-image 0.5s ease-in-out',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)'
+              }}
+            >
+              <div className="feature-carousel-phone" onClick={() => navigate(coreFeatures[activeFeature].route)}>
                 <div className="phone-mockup">
                   <div className="phone-screen">
                     {/* 手机界面模拟 */}
@@ -250,9 +277,44 @@ const HomePage: React.FC = () => {
                         <div className="phone-app-icon-wrapper">
                           {coreFeatures[activeFeature].icon}
                         </div>
+                        
+                        {/* 添加骨架屏元素 */}
+                        <div className="phone-skeleton-elements">
+                          <div className="skeleton-line skeleton-line-1"></div>
+                          <div className="skeleton-line skeleton-line-2"></div>
+                          <div className="skeleton-circle"></div>
+                          <div className="skeleton-line skeleton-line-3"></div>
+                          <div className="skeleton-line skeleton-line-4"></div>
+                        </div>
+                      </div>
+                      
+                      {/* 添加底部导航栏 */}
+                      <div className="phone-app-bottom-nav">
+                        <div className="bottom-nav-item bottom-nav-active"></div>
+                        <div className="bottom-nav-item"></div>
+                        <div className="bottom-nav-item"></div>
+                        <div className="bottom-nav-item"></div>
                       </div>
                     </div>
                   </div>
+                  {/* 添加手机装饰元素 */}
+                  <div className="phone-decorations">
+                    <div className="phone-decoration phone-decoration-1"></div>
+                    <div className="phone-decoration phone-decoration-2"></div>
+                    <div className="phone-decoration phone-decoration-3"></div>
+                  </div>
+                  
+                  {/* 添加提示文本 */}
+                  <div className="phone-click-hint">点击体验{coreFeatures[activeFeature].title}</div>
+                </div>
+                {/* 添加悬浮装饰元素 */}
+                <div className="floating-elements">
+                  <div className="floating-circle floating-circle-1"></div>
+                  <div className="floating-circle floating-circle-2"></div>
+                  <div className="floating-dot floating-dot-1"></div>
+                  <div className="floating-dot floating-dot-2"></div>
+                  <div className="floating-dot floating-dot-3"></div>
+                  <div className="floating-square"></div>
                 </div>
               </div>
               

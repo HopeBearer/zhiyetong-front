@@ -1483,12 +1483,12 @@ button:focus-visible {
 .feature-carousel-section {
   width: 100vw;
   margin: 3rem calc(-50vw + 50%);
-  background: linear-gradient(135deg, #0039c6 0%, #00a1ff 100%);
   padding: 3rem 0;
   color: #fff;
   overflow: hidden;
   position: relative;
-}
+  background: linear-gradient(135deg, #0039c6 0%, #00a1ff 100%);
+} 
 
 .feature-carousel-container {
   max-width: 1200px;
@@ -1502,43 +1502,256 @@ button:focus-visible {
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 3rem;
-  color: #fff;
+  color: #333;
 }
 
 .feature-carousel {
   position: relative;
-  padding-bottom: 3rem;
+  /* padding-bottom: 3rem; */
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 .feature-carousel-content {
   display: flex;
   align-items: center;
   gap: 3rem;
+  padding: 3rem;
+  border-radius: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  animation: bgFadeIn 0.5s ease-in-out;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-.feature-carousel-phone {
-  flex-shrink: 0;
-  width: 280px;
+/* 确保背景图片覆盖整个容器并添加模糊效果 */
+.feature-carousel-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  z-index: 1;
+  animation: fadeBackground 0.5s ease-in-out;
+  filter: blur(15px);
 }
 
+/* 手机周围的装饰元素 */
+.phone-decorations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.phone-decoration {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.phone-decoration-1 {
+  width: 20px;
+  height: 20px;
+  top: 12px;
+  right: -30px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.phone-decoration-2 {
+  width: 15px;
+  height: 15px;
+  bottom: 20px;
+  left: -25px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.phone-decoration-3 {
+  width: 25px;
+  height: 25px;
+  bottom: -10px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* 添加悬浮装饰元素 */
+.floating-elements {
+  position: absolute;
+  top: -80px;
+  left: -80px;
+  width: calc(100% + 160px);
+  height: calc(100% + 160px);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.floating-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: float 8s infinite ease-in-out;
+}
+
+.floating-circle-1 {
+  width: 60px;
+  height: 60px;
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floating-circle-2 {
+  width: 40px;
+  height: 40px;
+  bottom: 20%;
+  left: 15%;
+  animation-delay: 2s;
+}
+
+.floating-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  animation: floatFast 5s infinite ease-in-out;
+}
+
+.floating-dot-1 {
+  top: 30%;
+  left: 22%;
+  animation-delay: 1s;
+}
+
+.floating-dot-2 {
+  top: 60%;
+  left: 8%;
+  animation-delay: 0.5s;
+}
+
+.floating-dot-3 {
+  top: 75%;
+  left: 30%;
+  animation-delay: 1.5s;
+}
+
+.floating-square {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  bottom: 25%;
+  left: 5%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  border-radius: 8px;
+  transform: rotate(15deg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: rotate 12s infinite linear;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes floatFast {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-5px) translateX(5px);
+  }
+  50% {
+    transform: translateY(0) translateX(10px);
+  }
+  75% {
+    transform: translateY(5px) translateX(5px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 增强手机模型的立体感 */
 .phone-mockup {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 36px;
   border: 2px solid rgba(255, 255, 255, 0.3);
   padding: 12px;
   width: 100%;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    inset 0 0 10px rgba(255, 255, 255, 0.05);
   position: relative;
+  backdrop-filter: blur(8px);
+  overflow: visible;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.phone-mockup::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  border-radius: 40px;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.phone-mockup::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 为手机屏幕添加发光效果 */
 .phone-screen {
   background: #000;
   border-radius: 24px;
   overflow: hidden;
   aspect-ratio: 9/16;
   position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 0 20px rgba(0, 161, 255, 0.2),
+    inset 0 0 8px rgba(255, 255, 255, 0.1);
 }
 
+/* 应用界面的微调 */
 .phone-app-interface {
   position: absolute;
   top: 0;
@@ -1548,16 +1761,18 @@ button:focus-visible {
   background: #f0f2f5;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .phone-app-header {
   height: 48px;
-  background: #0039c6;
+  background: linear-gradient(135deg, #0039c6, #0072ff);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
   color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .phone-app-back, .phone-app-more {
@@ -1578,6 +1793,20 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   padding: 24px;
+  background: linear-gradient(135deg, #f0f2f5, #ffffff);
+  position: relative;
+  overflow: hidden;
+}
+
+.phone-app-content::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  background: radial-gradient(circle, rgba(0, 57, 198, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+  z-index: 0;
 }
 
 .phone-app-icon-wrapper {
@@ -1588,7 +1817,89 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.05) inset;
+  position: relative;
+  z-index: 1;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+  animation: pulse 3s infinite ease-in-out;
+}
+
+.phone-app-icon-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* 添加背景图片过渡动画 */
+@keyframes fadeBackground {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* 移动端响应式调整 */
+@media (max-width: 768px) {
+  .feature-carousel-content {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+  }
+  
+  .feature-carousel-phone {
+    width: 220px;
+  }
+  
+  .feature-carousel-title {
+    font-size: 1.8rem;
+  }
+  
+  .feature-carousel-item-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  .feature-carousel-description {
+    text-align: center;
+  }
+  
+  .feature-carousel-btn {
+    margin: 0 auto;
+    display: flex;
+  }
+  
+  .feature-carousel-pagination {
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+/* 当背景图片正在加载时的淡入效果 */
+@keyframes bgFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.feature-carousel-phone {
+  flex-shrink: 0;
+  width: 280px;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.feature-carousel-phone:hover {
+  transform: translateY(-10px) scale(1.03);
 }
 
 .phone-app-icon-wrapper .feature-icon {
@@ -1600,6 +1911,14 @@ button:focus-visible {
 
 .feature-carousel-text {
   flex: 1;
+  position: relative;
+  z-index: 2;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .feature-carousel-item-title {
@@ -1607,6 +1926,7 @@ button:focus-visible {
   font-weight: 600;
   margin-bottom: 1rem;
   color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .feature-carousel-description {
@@ -1639,6 +1959,7 @@ button:focus-visible {
   height: 6px;
   background-color: #fff;
   border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
 .feature-carousel-btn {
@@ -1654,11 +1975,13 @@ button:focus-visible {
   gap: 0.5rem;
   transition: all 0.3s ease;
   cursor: pointer;
+  backdrop-filter: blur(4px);
 }
 
 .feature-carousel-btn:hover {
   background: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .feature-carousel-btn svg {
@@ -1669,8 +1992,13 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 0;
   gap: 1rem;
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
 }
 
 .feature-carousel-arrow {
@@ -1684,10 +2012,12 @@ button:focus-visible {
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
 }
 
 .feature-carousel-arrow:hover {
   background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
 }
 
 .feature-carousel-arrow svg {
@@ -1718,48 +2048,145 @@ button:focus-visible {
   padding: 0;
   cursor: pointer;
   transition: all 0.2s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .feature-carousel-indicator.active {
   background: #fff;
   transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
 
 .feature-carousel-pagination {
   position: absolute;
-  bottom: 16px;
-  right: 16px;
+  bottom: 1.5rem;
+  right: 2rem;
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.3rem 0.8rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(4px);
+  z-index: 3;
 }
 
-/* 移动端响应式调整 */
-@media (max-width: 768px) {
-  .feature-carousel-content {
-    flex-direction: column;
-    gap: 2rem;
+/* 手机点击提示文本 */
+.phone-click-hint {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 4px 16px;
+  font-size: 0.8rem;
+  color: white;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.feature-carousel-phone:hover .phone-click-hint {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* 骨架屏元素 */
+.phone-skeleton-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.skeleton-line {
+  height: 8px;
+  background: linear-gradient(90deg, #e0e0e0, #f5f5f5, #e0e0e0);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  margin-bottom: 12px;
+  border-radius: 4px;
+}
+
+.skeleton-line-1 {
+  width: 70%;
+  margin-top: 50px;
+}
+
+.skeleton-line-2 {
+  width: 90%;
+}
+
+.skeleton-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #e0e0e0, #f5f5f5, #e0e0e0);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  margin: 10px 0;
+}
+
+.skeleton-line-3 {
+  width: 60%;
+}
+
+.skeleton-line-4 {
+  width: 40%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
   }
-  
-  .feature-carousel-phone {
-    width: 220px;
+  100% {
+    background-position: -200% 0;
   }
-  
-  .feature-carousel-title {
-    font-size: 1.8rem;
-  }
-  
-  .feature-carousel-item-title {
-    font-size: 1.5rem;
-    text-align: center;
-  }
-  
-  .feature-carousel-description {
-    text-align: center;
-  }
-  
-  .feature-carousel-btn {
-    margin: 0 auto;
-    display: flex;
-  }
+}
+
+/* 底部导航栏 */
+.phone-app-bottom-nav {
+  height: 48px;
+  background: rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.bottom-nav-item {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.bottom-nav-active {
+  background: rgba(0, 57, 198, 0.8);
+  box-shadow: 0 0 10px rgba(0, 57, 198, 0.3);
+}
+
+/* 增强手机模型的立体感和点击效果 */
+.feature-carousel-phone:active .phone-mockup {
+  transform: scale(0.98);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 5px rgba(255, 255, 255, 0.05);
 }
 
